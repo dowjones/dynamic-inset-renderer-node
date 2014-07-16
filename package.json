@@ -1,0 +1,26 @@
+{
+  "name": "dynamic-inset",
+  "version": "0.1.0",
+  "description": "A node.js render for the Dynamic Inset specification.",
+  "main": "index.js",
+  "dependencies":{
+    "request":"2.34.0",
+    "hogan.js":"~2.0.0",
+    "async":"~0.8.0",
+    "validator":"~3.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/dowjones/dynamic-inset.git"
+  },
+  "keywords": [
+    "inset",
+    "module"
+  ],
+  "author": "Erin Sparling",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dowjones/dynamic-inset/issues"
+  },
+  "homepage": "https://github.com/dowjones/dynamic-inset"
+}
