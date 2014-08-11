@@ -20,7 +20,7 @@
   "author": "Erin Sparling",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dowjones/dynamic-inset/issues"
+    "url": "https://github.com/dowjones/dynamic-inset-renderer-node/issues"
   },
-  "homepage": "https://github.com/dowjones/dynamic-inset"
+  "homepage": "https://github.com/dowjones/dynamic-inset-renderer-node"
 }
