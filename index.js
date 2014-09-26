@@ -73,6 +73,7 @@ var inset = {
         inset.compile(callback, results);
       }]
     }, function(err, results){
+      results.status = results.inset_file.status;
       callback(err, results)
     });
   }
