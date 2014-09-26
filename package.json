@@ -1,6 +1,6 @@
 {
   "name": "dynamic-inset",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A node.js render for the Dynamic Inset specification.",
   "main": "index.js",
   "dependencies":{

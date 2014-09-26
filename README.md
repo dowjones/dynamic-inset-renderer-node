@@ -60,7 +60,8 @@ the inset processing steps:
     list: [ 'dog', 'cat', 'goat' ],
     importantstuff: 'The content of this inset is from a json file. and the template is from a mustache file.'
   },
-  compiled_inset: '<h1>First Inset</h1>\n<p>The content of this inset is from a json file. and the template is from a mustache file.</p>\n<ul>\n<li>dog</li><li>cat</li><li>goat</li>\n</ul>\n' }
+  compiled_inset: '<h1>First Inset</h1>\n<p>The content of this inset is from a json file. and the template is from a mustache file.</p>\n<ul>\n<li>dog</li><li>cat</li><li>goat</li>\n</ul>\n' },
+  status:'OK'
 }
 ```
 
@@ -98,6 +99,23 @@ var insetString = JSON.stringify({
 
 inset.render(insetString, function(err, results){
   console.log(results.compiled_inset);
+});
+```
+
+###Status
+Insets can be remotely disabled via the status property in the specification.
+The inset.json file's status is bubbled up to the top-level of the object for
+easy discovery and testing.
+```
+//set the url
+inset.url = 'http://dynamic-inset-assets.herokuapp.com/inset/inset.json';
+
+inset.render(function(err, results){
+  if(results.status == 'OK') {
+    //process the inset because it is ok
+  } else {
+    //ignore the inset, as it has been disabled remotely.
+  }
 });
 ```
 
