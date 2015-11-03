@@ -23,16 +23,20 @@ var request = require('request')
 var inset = {
   url:null,
   get_inset:function(callback){
-    request(inset.url, function(err, response, body){
-      callback(err, JSON.parse(body));
+    request({
+      url: inset.url,
+      json: true
+    }, function(err, response, data){
+      callback(err, data);
     });
   },
   get_inset_data:function(callback, results){
+
     if(results.inset_file.serverside.data.data != undefined){
       callback(null, results.inset_file.serverside.data.data);
     } else {
-      request(results.inset_file.serverside.data.url, function(err, response, body){
-        callback(err, JSON.parse(body));
+      request({url: results.inset_file.serverside.data.url, json:true}, function(err, response, data){
+        callback(err, data);
       });
     }
   },
@@ -46,8 +50,18 @@ var inset = {
     }
   },
   compile:function(callback, results){
+
+    // inset data for clientside
+    if ( typeof(results.inset_data['includeData']) == "string" || typeof(results.inset_data['includeData']) == "boolean" ) {
+      var insetHashFuncName = getRandom();
+      var insetDataScript = "<script>var " + insetHashFuncName + " = function() {return " + JSON.stringify(results.inset_data) + ";}</script>";
+      results.inset_template = insetDataScript + results.inset_template; // prepend insetData_ function to template.
+      results.inset_data['insetData'] = insetHashFuncName; // add to data object
+    }
+
     callback(null, hogan.compile(results.inset_template).render(results.inset_data));
   },
+
   render:function(url, callback){
     if((typeof url === 'function') && (callback === undefined)) {
       callback = url;
@@ -80,3 +94,15 @@ var inset = {
 };
 
 module.exports = inset;
+
+function randomIntInc (low, high) {
+    return Math.floor(Math.random() * (high - low + 1) + low);
+}
+
+function getRandom() {
+  var numbers = "";
+  for (var i = 0; i < 6; i++) {
+      numbers += randomIntInc(1,10);
+  }
+  return "insetData_"+numbers;
+}
