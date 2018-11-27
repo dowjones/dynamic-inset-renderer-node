@@ -1,10 +1,10 @@
 {
   "name": "dynamic-inset",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A node.js render for the Dynamic Inset specification.",
   "main": "index.js",
   "dependencies": {
-    "request": "2.34.0",
+    "request": ">=2.68.0",
     "hogan.js": "~2.0.0",
     "async": "~0.8.0",
     "validator": "~3.12.0"
